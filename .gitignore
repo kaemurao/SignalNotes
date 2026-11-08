@@ -1,0 +1,39 @@
+# Build outputs
+Builds/
+build/
+cmake-build-*/
+
+# JUCE generated files
+JuceLibraryCode/
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+*.pdb
+*.ilk
+*.obj
+*.pch
+*.ipch
+*.exe
+*.dll
+*.lib
+*.exp
+
+# macOS
+.DS_Store
+
+# Linux
+*.o
+*.so
+
+# IDE settings
+.idea/
+
+# Temporary files
+*.tmp
+*.log
