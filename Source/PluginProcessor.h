@@ -52,8 +52,15 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    // signal notes
+    void setNoteText(const juce::String& newText);
+    juce::String getNoteText() const;
 
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SignalNotesAudioProcessor)
+
+    // signal notes
+    juce::String noteText;
 };
