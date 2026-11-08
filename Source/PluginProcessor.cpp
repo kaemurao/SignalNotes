@@ -90,6 +90,17 @@ void SignalNotesAudioProcessor::changeProgramName (int index, const juce::String
 {
 }
 
+// signal notes functions
+void SignalNotesAudioProcessor::setNoteText(const juce::String& newText)
+{
+    noteText = newText;
+}
+
+juce::String SignalNotesAudioProcessor::getNoteText() const
+{
+    return noteText;
+}
+
 //==============================================================================
 void SignalNotesAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
