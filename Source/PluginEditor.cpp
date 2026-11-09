@@ -16,6 +16,12 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     addAndMakeVisible (noteEditor);
     
     noteEditor.setText (audioProcessor.getNoteText(), juce::dontSendNotification);
+
+    noteEditor.onTextChange = [this]
+    {
+        audioProcessor.setNoteText (noteEditor.getText());
+    };
+
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
