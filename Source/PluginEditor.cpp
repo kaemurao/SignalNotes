@@ -14,6 +14,10 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     addAndMakeVisible (noteEditor);
+
+    noteEditor.setMultiLine (true);
+    noteEditor.setReturnKeyStartsNewLine (true);
+    noteEditor.setScrollbarsShown (true);
     
     noteEditor.setText (audioProcessor.getNoteText(), juce::dontSendNotification);
 
