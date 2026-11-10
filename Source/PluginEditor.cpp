@@ -18,6 +18,35 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     noteEditor.setMultiLine (true);
     noteEditor.setReturnKeyStartsNewLine (true);
     noteEditor.setScrollbarsShown (true);
+
+    // background
+    noteEditor.setColour (
+        juce::TextEditor::backgroundColourId,
+        juce::Colour::fromRGB (37, 37, 37)
+    );
+
+    // text
+    noteEditor.setColour (
+        juce::TextEditor::textColourId,
+        juce::Colour::fromRGB (229, 229, 229)
+    );
+
+    // cursor
+    noteEditor.setColour (
+        juce::CaretComponent::caretColourId,
+        juce::Colour::fromRGB (255, 181, 6)
+    );
+
+    // remove editor outline
+    noteEditor.setColour (
+        juce::TextEditor::outlineColourId,
+        juce::Colours::transparentBlack
+    );
+
+    noteEditor.setColour (
+        juce::TextEditor::focusedOutlineColourId,
+        juce::Colours::transparentBlack
+    );
     
     noteEditor.setText (audioProcessor.getNoteText(), juce::dontSendNotification);
 
@@ -39,7 +68,8 @@ SignalNotesAudioProcessorEditor::~SignalNotesAudioProcessorEditor()
 void SignalNotesAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    // g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll (juce::Colour::fromRGB (37, 37, 37));
 
     // g.setColour (juce::Colours::white);
     // g.setFont (juce::FontOptions (15.0f));
