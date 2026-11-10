@@ -58,6 +58,8 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    setResizable (true, true);
+    setResizeLimits (320, 240, 10000, 10000);
 }
 
 SignalNotesAudioProcessorEditor::~SignalNotesAudioProcessorEditor()
@@ -81,5 +83,6 @@ void SignalNotesAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     // setBounds (x, y, width, height)
-    noteEditor.setBounds (10, 10, 380, 280);
+    // noteEditor.setBounds (10, 10, 380, 280); // default
+    noteEditor.setBounds (10, 10, getWidth() - 20, getHeight() - 20);
 }
