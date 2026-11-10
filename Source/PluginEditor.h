@@ -28,6 +28,8 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     SignalNotesAudioProcessor& audioProcessor;
+
+    juce::LookAndFeel_V4 signalNotesLookAndFeel;
     
     // signal notes
     juce::TextEditor noteEditor;

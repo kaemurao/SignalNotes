@@ -14,6 +14,7 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     addAndMakeVisible (noteEditor);
+    noteEditor.setLookAndFeel (&signalNotesLookAndFeel);
 
     noteEditor.setMultiLine (true);
     noteEditor.setReturnKeyStartsNewLine (true);
@@ -47,6 +48,22 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
         juce::TextEditor::focusedOutlineColourId,
         juce::Colours::transparentBlack
     );
+
+    // scrollbar colours
+    signalNotesLookAndFeel.setColour (
+        juce::ScrollBar::backgroundColourId,
+        juce::Colour::fromRGB (45, 45, 45)
+    );
+
+    signalNotesLookAndFeel.setColour (
+        juce::ScrollBar::thumbColourId,
+        juce::Colour::fromRGB (55, 55, 55)
+    );
+
+    // signalNotesLookAndFeel.setColour (
+    //     juce::ScrollBar::trackColourId,
+    //     juce::Colour::fromRGB (48, 48, 48)
+    // );
     
     noteEditor.setText (audioProcessor.getNoteText(), juce::dontSendNotification);
 
@@ -57,6 +74,7 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
 
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+    setOpaque (true);
     setSize (400, 300);
     setResizable (true, true);
     setResizeLimits (320, 240, 10000, 10000);
