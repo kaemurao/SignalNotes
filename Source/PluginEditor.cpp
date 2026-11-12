@@ -15,22 +15,10 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
 {
     addAndMakeVisible (noteEditor);
     addAndMakeVisible (fontSizeButton);
-    addAndMakeVisible (fontSizeSelector);
 
     startTimerHz (20);
 
     fontSizeButton.setVisible (false);
-    fontSizeSelector.setVisible (false);
-
-    // font size options
-    fontSizeSelector.addItem ("10 pt", 10);
-    fontSizeSelector.addItem ("12 pt", 12);
-    fontSizeSelector.addItem ("14 pt", 14);
-    fontSizeSelector.addItem ("16 pt", 16);
-    fontSizeSelector.addItem ("18 pt", 18);
-    fontSizeSelector.addItem ("20 pt", 20);
-    fontSizeSelector.addItem ("24 pt", 24);
-    fontSizeSelector.addItem ("28 pt", 28);
 
     // font size button
     fontSizeButton.setTooltip ("Change font size");
@@ -48,42 +36,55 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
 
     fontSizeButton.onClick = [this]
     {
-        isFontSizeSelectorOpen = true;
+        juce::PopupMenu menu;
 
-        fontSizeButton.setVisible (false);
-        fontSizeSelector.setVisible (true);
-        fontSizeSelector.toFront (true);
+        menu.addItem (10, "10 pt", true, currentFontSize == 10);
+        menu.addItem (12, "12 pt", true, currentFontSize == 12);
+        menu.addItem (14, "14 pt", true, currentFontSize == 14);
+        menu.addItem (16, "16 pt", true, currentFontSize == 16);
+        menu.addItem (18, "18 pt", true, currentFontSize == 18);
+        menu.addItem (20, "20 pt", true, currentFontSize == 20);
+        menu.addItem (24, "24 pt", true, currentFontSize == 24);
+        menu.addItem (28, "28 pt", true, currentFontSize == 28);
+
+        menu.setLookAndFeel (&signalNotesLookAndFeel);
+
+        juce::Component::SafePointer<SignalNotesAudioProcessorEditor> safeThis (this);
+
+        menu.showMenuAsync (
+            juce::PopupMenu::Options()
+                .withTargetComponent (&fontSizeButton)
+                .withMinimumWidth (80),
+
+            [safeThis] (int result)
+            {
+                if (safeThis == nullptr || result == 0)
+                    return;
+
+                safeThis->currentFontSize = result;
+
+                safeThis->noteEditor.setFont (
+                    juce::Font (
+                        juce::FontOptions().withHeight (
+                            static_cast<float> (result)
+                        )
+                    )
+                );
+            }
+        );
     };
-
-    // font size selector
-    fontSizeSelector.setMouseCursor (
-        juce::MouseCursor::PointingHandCursor
-    );
-
-    fontSizeSelector.setSelectedId (14);
 
     noteEditor.setFont (
-        juce::Font (juce::FontOptions().withHeight (14.0f))
+        juce::Font (
+            juce::FontOptions().withHeight (
+                static_cast<float> (currentFontSize)
+            )
+        )
     );
-
-    fontSizeSelector.onChange = [this]
-    {
-        const auto fontSize = fontSizeSelector.getSelectedId();
-
-        noteEditor.setFont (
-            juce::Font (juce::FontOptions().withHeight (
-                static_cast<float> (fontSize)
-            ))
-        );
-
-        isFontSizeSelectorOpen = false;
-        fontSizeSelector.setVisible (false);
-    };
 
     // look and feel
     noteEditor.setLookAndFeel (&signalNotesLookAndFeel);
     fontSizeButton.setLookAndFeel (&signalNotesLookAndFeel);
-    fontSizeSelector.setLookAndFeel (&signalNotesLookAndFeel);
 
     noteEditor.setMultiLine (true);
     noteEditor.setReturnKeyStartsNewLine (true);
@@ -133,24 +134,6 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     //     juce::ScrollBar::trackColourId,
     //     juce::Colour::fromRGB (48, 48, 48)
     // );
-
-    // ComboBox background
-    signalNotesLookAndFeel.setColour (
-        juce::ComboBox::backgroundColourId,
-        juce::Colour::fromRGB (50, 50, 50)
-    );
-
-    // ComboBox text
-    signalNotesLookAndFeel.setColour (
-        juce::ComboBox::textColourId,
-        juce::Colour::fromRGB (229, 229, 229)
-    );
-
-    // ComboBox outline
-    signalNotesLookAndFeel.setColour (
-        juce::ComboBox::outlineColourId,
-        juce::Colours::transparentBlack
-    );
 
     // Dropdown menu background
     signalNotesLookAndFeel.setColour (
@@ -215,8 +198,6 @@ void SignalNotesAudioProcessorEditor::resized()
     noteEditor.setBounds (10, 10, getWidth() - 20, getHeight() - 20);
 
     fontSizeButton.setBounds (getWidth() - 40, 10, 30, 30);
-
-    fontSizeSelector.setBounds (getWidth() - 90, 10, 80, 30);
 }
 
 void SignalNotesAudioProcessorEditor::timerCallback()
@@ -225,6 +206,5 @@ void SignalNotesAudioProcessorEditor::timerCallback()
         getLocalPoint (nullptr, juce::Desktop::getMousePosition())
     );
 
-    if (!isFontSizeSelectorOpen)
-        fontSizeButton.setVisible (mouseInside);
+    fontSizeButton.setVisible (mouseInside);
 }

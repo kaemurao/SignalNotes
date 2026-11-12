@@ -34,9 +34,8 @@ private:
     juce::LookAndFeel_V4 signalNotesLookAndFeel;
     juce::TextEditor noteEditor;
     juce::TextButton fontSizeButton { "A" };
-    juce::ComboBox fontSizeSelector;
 
-    bool isFontSizeSelectorOpen = false;
+    int currentFontSize = 14;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SignalNotesAudioProcessorEditor)
 };
