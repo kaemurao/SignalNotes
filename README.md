@@ -28,10 +28,10 @@ functionality and the lack of an equivalent feature in Ableton Live.
 - Resizable plugin window
 - Resizable text editor
 - Dark writing interface
+- Adjustable font size
+- Independent note per plugin instance
 
 _more features are planned_
-
-![Signal Notes](images/signal-notes-in-ableton.webp)
 
 ## development
 
@@ -49,6 +49,12 @@ additional complexity of audio processing and DSP mathematics.
 This project is also the beginning of a longer learning journey. My eventual
 goal is to develop my own audio effects, starting with simpler processors
 and working toward building a reverb.
+
+## images
+
+![Signal notes interface](images/signal-notes.png)
+
+![Signal notes font control](images/signal-notes-dropdown.png)
 
 ## project status
 
