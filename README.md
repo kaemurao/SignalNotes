@@ -1,28 +1,54 @@
-# Signal Notes
+## SignalNotes
 
-![JUCE](https://img.shields.io/badge/-JUCE-8DC63F?style=flat-square&logo=juce&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)
+![JUCE](https://img.shields.io/badge/JUCE-8DC63F?style=for-the-badge&logo=juce&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![VST3](https://img.shields.io/badge/VST3-346?style=for-the-badge)
 
-Welcome to the first part of my journey in building audio plugins. I plan
-to continue building until I create my own reverb.
+**a simple notepad plugin for music producers**
 
-I needed something to keep track of my thoughts or reasoning when it
-came to signal chains in Ableton. This led me to creating my first
-"audio" plugin, `Signal Notes`. It is a notepad for my main DAW (Ableton).
+Welcome to the first part of my journey into audio plugin development.
+I plan to keep building until I create my own reverb.
 
-You can find yourself throwing in lyrics or even journalling (if you're
-like that for some reason). Ponder life too perhaps.
+## about
 
-This is my solution to Ableton not having a notepad built in and mostly
-based off of Logic Pro's own notepad function.
+I wanted a place to keep track of my thoughts and reasoning when working
+with signal chains in Ableton Live. This led me to create my first plugin:
+SignalNotes.
 
-The main learning outcome was an introduction to utilizing the JUCE
-framework and developing audio plugins without actually working with
-anything audio wise.
+SignalNotes is a simple notepad plugin designed with Ableton Live in mind.
+It provides a space to document production ideas, signal chains, lyrics, or
+even the occasional journal entry (if you're like that).
 
-To elaborate, Signal Notes is my first contact with DSP, the JUCE framework,
-and C++. I did not want to start off with audio processing and manipulation
-immediately. The reason being to first familiarize myself with these
-concepts and tools. If including audio math ontop, it would lead
-to massive burnout and even finding myself losing a spark for audio
-in general.
+This project was largely inspired by Logic Pro's built-in notepad
+functionality and the lack of an equivalent feature in Ableton Live.
+
+## features
+
+- Multiline text editing
+- Resizable plugin window
+- Resizable text editor
+- Dark writing interface
+
+_more features are planned_
+
+## development
+
+SignalNotes is my first hands-on introduction to the JUCE framework and C++
+audio plugin development.
+
+Rather than immediately jumping into digital signal processing and audio
+manipulation, I wanted to start with something relatively simple. Building
+a notepad gave me an opportunity to understand the structure of an audio
+plugin, its processor and editor, and how it interacts with a DAW.
+
+I wanted to become comfortable with these tools before introducing the
+additional complexity of audio processing and DSP mathematics.
+
+This project is also the beginning of a longer learning journey. My eventual
+goal is to develop my own audio effects, starting with simpler processors
+and working toward building a reverb.
+
+## project status
+
+SignalNotes is currently a work in progress. Features and improvements are
+being developed as I continue learning JUCE and C++.
