@@ -38,7 +38,7 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
     {
         juce::PopupMenu menu;
 
-        menu.addItem (10, "10 pt", true, currentFontSize == 10);
+        menu.addItem (11, "11 pt", true, currentFontSize == 11);
         menu.addItem (12, "12 pt", true, currentFontSize == 12);
         menu.addItem (14, "14 pt", true, currentFontSize == 14);
         menu.addItem (16, "16 pt", true, currentFontSize == 16);
@@ -46,6 +46,7 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
         menu.addItem (20, "20 pt", true, currentFontSize == 20);
         menu.addItem (24, "24 pt", true, currentFontSize == 24);
         menu.addItem (28, "28 pt", true, currentFontSize == 28);
+        menu.addItem (32, "32 pt", true, currentFontSize == 32);
 
         menu.setLookAndFeel (&signalNotesLookAndFeel);
 
