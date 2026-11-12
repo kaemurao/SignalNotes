@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="CRtOx7" name="SignalNotes" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginManufacturer="murao">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginManufacturer="Kaemurao"
+              pluginVST3Category="Fx|Tools" pluginDesc="A lightweight notepad plugin for documenting ideas and signal-chain notes."
+              userNotes="My introduction to the JUCE framework and C++ audio plugin development">
   <MAINGROUP id="Of3c3T" name="SignalNotes">
     <GROUP id="{C225885B-D4C3-734F-4634-8F1C709B4DBF}" name="Source">
       <FILE id="cZTohC" name="PluginProcessor.cpp" compile="1" resource="0"
