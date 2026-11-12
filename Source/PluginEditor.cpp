@@ -63,7 +63,7 @@ SignalNotesAudioProcessorEditor::SignalNotesAudioProcessorEditor (SignalNotesAud
 
                 safeThis->currentFontSize = result;
 
-                safeThis->noteEditor.setFont (
+                safeThis->noteEditor.applyFontToAllText (
                     juce::Font (
                         juce::FontOptions().withHeight (
                             static_cast<float> (result)
