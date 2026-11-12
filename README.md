@@ -31,6 +31,8 @@ functionality and the lack of an equivalent feature in Ableton Live.
 
 _more features are planned_
 
+![Signal Notes](images/signal-notes-in-ableton.webp)
+
 ## development
 
 SignalNotes is my first hands-on introduction to the JUCE framework and C++
