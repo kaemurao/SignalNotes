@@ -188,6 +188,12 @@ void SignalNotesAudioProcessor::getStateInformation (juce::MemoryBlock& destData
     // as intermediaries to make it easy to save and load complex data.
 
     juce::ValueTree state ("SIGNAL_NOTES_STATE");
+
+    state.setProperty ("noteText", noteText, nullptr);
+
+    std::unique_ptr<juce::XmlElement> xml (state.createXml());
+
+    copyXmlToBinary (*xml, destData);
 }
 
 void SignalNotesAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
