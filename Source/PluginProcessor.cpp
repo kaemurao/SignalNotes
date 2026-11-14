@@ -202,6 +202,17 @@ void SignalNotesAudioProcessor::setStateInformation (const void* data, int sizeI
     // whose contents will have been created by the getStateInformation() call.
 
     std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+
+    // saved data corrupted, empty, invalid?
+    if (xmlState != nullptr)
+    {
+        auto state = juce::ValueTree::fromXml (*xmlState);
+
+        if (state.hasType ("SIGNAL_NOTES_STATE"))
+        {
+            noteText = state.getProperty ("noteText").toString();
+        }
+    }
 }
 
 //==============================================================================
